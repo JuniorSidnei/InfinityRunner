@@ -1,0 +1,52 @@
+{
+    "name": "InputSource",
+    "maps": [
+        {
+            "name": "PlayerMovement",
+            "id": "a0ccc176-7881-486e-b8c0-5fe78e62d324",
+            "actions": [
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "4b38b041-5467-406d-ad59-9434ec4797b8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "StartGame",
+                    "type": "Button",
+                    "id": "abde737a-0121-4ea8-85c0-d1eb96654835",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "44cbcf9e-c715-4ca9-be3b-c1e7aa3b8b3b",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8159e3bf-2292-4bae-bb34-d5d1d18ff20a",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StartGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
