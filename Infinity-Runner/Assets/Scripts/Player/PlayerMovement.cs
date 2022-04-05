@@ -6,8 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace InfinityRunner.Player.Movement {
-
-
+    
     public class PlayerMovement : MonoBehaviour {
 
         public float FallMultiplier = 2.5f;

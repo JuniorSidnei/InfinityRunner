@@ -53,6 +53,9 @@ TagManager:
   - name: Player
     uniqueID: 855603705
     locked: 0
+  - name: Coin
+    uniqueID: 4274109259
+    locked: 0
   - name: ForeGround
     uniqueID: 3488903365
     locked: 0

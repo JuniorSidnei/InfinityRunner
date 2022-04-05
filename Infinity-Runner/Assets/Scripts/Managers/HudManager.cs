@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using InfinityRunner.Utils;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -15,6 +16,10 @@ namespace InfinityRunner.Managers {
 
         [Header("end game settings")]
         public GameObject EndGamePanel;
+        public TextMeshProUGUI EndGameScoreText;
+        
+        [Header("score settings")]
+        public TextMeshProUGUI ScoreText;
         
         private List<GameObject> m_lifes = new List<GameObject>();
 
@@ -48,6 +53,11 @@ namespace InfinityRunner.Managers {
                 EndGamePanel.SetActive(true);
                 Time.timeScale = 0;
             }
+        }
+
+        public void UpdateScore(int currentScore) {
+            ScoreText.text = currentScore.ToString();
+            EndGameScoreText.text = currentScore.ToString();
         }
     }
 }
