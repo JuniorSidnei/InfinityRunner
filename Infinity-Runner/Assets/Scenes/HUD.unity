@@ -337,6 +337,7 @@ MonoBehaviour:
   RetryBtn: {fileID: 1938418762}
   HubBtn: {fileID: 1893191267}
   ScoreText: {fileID: 2087976074}
+  PlayerStatus: {fileID: 11400000, guid: 258b3aac7cc57a34a9e758324a75c013, type: 2}
 --- !u!4 &918745708
 Transform:
   m_ObjectHideFlags: 0

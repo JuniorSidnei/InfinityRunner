@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using InfinityRunner.Scriptables;
 using InfinityRunner.Utils;
 using TMPro;
 using Unity.Mathematics;
@@ -24,7 +25,8 @@ namespace InfinityRunner.Managers {
         
         [Header("score settings")]
         public TextMeshProUGUI ScoreText;
-        
+
+        public PlayerStatus PlayerStatus;
         private List<GameObject> m_lifes = new List<GameObject>();
 
         private void OnEnable() {
@@ -36,8 +38,7 @@ namespace InfinityRunner.Managers {
         }
 
         private void Start() {
-            //this number 5 will be the amount of life that player have in the scriptable
-            for (var i = 0; i < 5; i++) {
+            for (var i = 0; i < PlayerStatus.Life; i++) {
                 var life = Instantiate(LifeObject, LifeContainer);
                 life.transform.localPosition = new Vector3(i * 80, 0, 0);
                 m_lifes.Add(life);
@@ -67,6 +68,7 @@ namespace InfinityRunner.Managers {
         public void UpdateScore(int currentScore) {
             ScoreText.text = currentScore.ToString();
             EndGameScoreText.text = currentScore.ToString();
+            PlayerStatus.Coins = currentScore;
         }
 
         private void EnableEndGamePanel() {

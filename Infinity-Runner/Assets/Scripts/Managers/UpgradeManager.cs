@@ -6,12 +6,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace InfinityRunner.Managers
-{
+namespace InfinityRunner.Managers {
 
+    public class UpgradeManager : MonoBehaviour {
 
-    public class UpgradeManager : MonoBehaviour
-    {
+        public enum SelectedUpgrade {
+            None, Life, Speed, Jump 
+        }
+        
         [Header("Control Btns")]
         public Button BuyUpgradeBtn;
         public Button BackUpgradeBtn;
@@ -32,13 +34,22 @@ namespace InfinityRunner.Managers
         public ItemDescription JumpDescription;
         public ItemDescription SpeedDescription;
 
+        public SelectedUpgrade Upgrade;
+
+        public delegate void OnPurchaseUpgrade(SelectedUpgrade upgrade);
+        public static event OnPurchaseUpgrade onPurchaseUpgrade;
+        
         private void Awake() {
-            
+            Upgrade = SelectedUpgrade.None;
             BackUpgradeBtn.onClick.AddListener(Hide);
+            BuyUpgradeBtn.interactable = false;
+            BuyUpgradeBtn.onClick.AddListener(() => {
+                onPurchaseUpgrade?.Invoke(Upgrade);
+            });
             
-            UpgradeOneBtn.onClick.AddListener(() => UpdateItemDescription(LifeDescription));
-            UpgradeTwoBtn.onClick.AddListener(() => UpdateItemDescription(SpeedDescription));
-            UpgradeThreeBtn.onClick.AddListener(() => UpdateItemDescription(JumpDescription));
+            UpgradeOneBtn.onClick.AddListener(() => UpdateItemDescription(LifeDescription, SelectedUpgrade.Life));
+            UpgradeTwoBtn.onClick.AddListener(() => UpdateItemDescription(SpeedDescription, SelectedUpgrade.Speed));
+            UpgradeThreeBtn.onClick.AddListener(() => UpdateItemDescription(JumpDescription, SelectedUpgrade.Jump));
         }
 
         public void Show() {
@@ -49,9 +60,10 @@ namespace InfinityRunner.Managers
             UpgradePanel.SetActive(false);
         }
         
-        private void UpdateItemDescription(ItemDescription item) {
+        private void UpdateItemDescription(ItemDescription item, SelectedUpgrade upgrade) {
             DescriptionText.text = item.Description;
             PriceText.text = item.ItemPrice.ToString();
+            Upgrade = upgrade;
         }
     }
 }
