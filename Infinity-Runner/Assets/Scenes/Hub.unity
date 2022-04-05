@@ -3305,6 +3305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1818938266}
   - component: {fileID: 1818938267}
+  - component: {fileID: 1818938268}
   m_Layer: 0
   m_Name: HubManager
   m_TagString: Untagged
@@ -3342,10 +3343,23 @@ MonoBehaviour:
   MenuBtn: {fileID: 2045568431}
   ShopBtn: {fileID: 1110268900}
   UpgradeBtn: {fileID: 89115082}
+  ShopPanel: {fileID: 0}
+  UpgradeManager: {fileID: 1818938268}
+--- !u!114 &1818938268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818938265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70016b607b7fa2479d5222cc009331b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   BuyUpgradeBtn: {fileID: 1216069360}
   BackUpgradeBtn: {fileID: 1407391005}
   UpgradePanel: {fileID: 1034422864}
-  ShopPanel: {fileID: 0}
   UpgradeOneBtn: {fileID: 93761876}
   UpgradeTwoBtn: {fileID: 414782311}
   UpgradeThreeBtn: {fileID: 667158711}
