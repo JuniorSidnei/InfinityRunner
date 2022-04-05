@@ -4,6 +4,8 @@ using InfinityRunner.Utils;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace InfinityRunner.Managers {
 
@@ -17,6 +19,8 @@ namespace InfinityRunner.Managers {
         [Header("end game settings")]
         public GameObject EndGamePanel;
         public TextMeshProUGUI EndGameScoreText;
+        public Button RetryBtn;
+        public Button HubBtn;
         
         [Header("score settings")]
         public TextMeshProUGUI ScoreText;
@@ -39,6 +43,12 @@ namespace InfinityRunner.Managers {
                 m_lifes.Add(life);
             }
             
+            RetryBtn.onClick.AddListener(() => {
+                Time.timeScale = 1;
+                SceneManager.LoadScene("GameScene");
+            });
+            
+            HubBtn.onClick.AddListener(ShowHubScene);
         }
 
         private void GameStarted() {
@@ -50,7 +60,7 @@ namespace InfinityRunner.Managers {
             star.AnimateStar();
 
             if (index <= 0) {
-                Invoke(nameof(ShowEndGamePanel), 0.5f);
+                Invoke(nameof(EnableEndGamePanel), 0.5f);
             }
         }
 
@@ -59,9 +69,14 @@ namespace InfinityRunner.Managers {
             EndGameScoreText.text = currentScore.ToString();
         }
 
-        private void ShowEndGamePanel() {
-            EndGamePanel.SetActive(true);
-            Time.timeScale = 0;
+        private void EnableEndGamePanel() {
+            EndGamePanel.SetActive(enabled);
+            Time.timeScale = enabled ? 0 : 1;
+        }
+
+        private void ShowHubScene() {
+            Time.timeScale = 1;
+            SceneManager.LoadScene("Hub");
         }
     }
 }
