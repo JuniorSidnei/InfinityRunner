@@ -13,7 +13,6 @@ namespace InfinityRunner.Player.Movement {
         public float FallMultiplier = 2.5f;
         public float LowFallMultiplier = 2f;
         public float JumpForce;
-        public LayerMask ObstacleLayer;
 
         private Rigidbody2D m_rigidbody;
         private PlayerInput m_playerInput;
@@ -57,14 +56,6 @@ namespace InfinityRunner.Player.Movement {
         
         private void CancelJump(InputAction.CallbackContext callbackContext) {
             m_isJumpimg = false;
-        }
-
-        private void OnTriggerEnter2D(Collider2D other) {
-            if (((1 << other.gameObject.layer) & ObstacleLayer) == 0) {
-                return;
-            }
-            
-            Debug.Log("bati na pedra");
         }
     }
 }

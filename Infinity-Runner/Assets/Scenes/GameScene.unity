@@ -325,6 +325,7 @@ GameObject:
   - component: {fileID: 652578040}
   - component: {fileID: 652578041}
   - component: {fileID: 652578039}
+  - component: {fileID: 652578042}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -440,9 +441,6 @@ MonoBehaviour:
   FallMultiplier: 6
   LowFallMultiplier: 2
   JumpForce: 6
-  ObstacleLayer:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!114 &652578041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,6 +458,22 @@ MonoBehaviour:
     m_Bits: 128
   CircleRadius: 0.1
   GroundCheck: {fileID: 302909308}
+--- !u!114 &652578042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652578035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ce7ebc0c2b72b942b19bbb3ff8dc649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Life: 5
+  ObstacleLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &722380862
 GameObject:
   m_ObjectHideFlags: 0
