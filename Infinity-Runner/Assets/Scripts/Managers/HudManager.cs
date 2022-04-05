@@ -50,14 +50,18 @@ namespace InfinityRunner.Managers {
             star.AnimateStar();
 
             if (index <= 0) {
-                EndGamePanel.SetActive(true);
-                Time.timeScale = 0;
+                Invoke(nameof(ShowEndGamePanel), 0.5f);
             }
         }
 
         public void UpdateScore(int currentScore) {
             ScoreText.text = currentScore.ToString();
             EndGameScoreText.text = currentScore.ToString();
+        }
+
+        private void ShowEndGamePanel() {
+            EndGamePanel.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 }
