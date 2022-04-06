@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using InfinityRunner.Save;
 using InfinityRunner.Scriptables;
 using TMPro;
 using UnityEngine;
@@ -17,7 +18,8 @@ namespace InfinityRunner.Managers {
         [Header("Control Btns")]
         public Button BuyUpgradeBtn;
         public Button BackUpgradeBtn;
-        
+
+        public TextMeshProUGUI CoinsText;
         public GameObject UpgradePanel;
         
         [Header("Upgrade btns")]
@@ -35,25 +37,43 @@ namespace InfinityRunner.Managers {
         public ItemDescription SpeedDescription;
 
         public SelectedUpgrade Upgrade;
+        public PlayerStatus PlayerStatus;
 
         public delegate void OnPurchaseUpgrade(SelectedUpgrade upgrade);
         public static event OnPurchaseUpgrade onPurchaseUpgrade;
+
+        private Dictionary<SelectedUpgrade, int> m_upgradesPrice = new Dictionary<SelectedUpgrade, int>();
         
         private void Awake() {
             Upgrade = SelectedUpgrade.None;
             BackUpgradeBtn.onClick.AddListener(Hide);
             BuyUpgradeBtn.interactable = false;
             BuyUpgradeBtn.onClick.AddListener(() => {
+                if (PlayerStatus.Coins < m_upgradesPrice[Upgrade]) return;
+                
+                PlayerStatus.Coins -= m_upgradesPrice[Upgrade];
+                UpdateStatusUpgrade(Upgrade);
+                Upgrade = SelectedUpgrade.None;
+                BuyUpgradeBtn.interactable = false;
+                SaveSystem.SavePlayerStatus(PlayerStatus);
+                CoinsText.text = PlayerStatus.Coins.ToString();
+                DescriptionText.text = "";
+                PriceText.text = "";
                 onPurchaseUpgrade?.Invoke(Upgrade);
             });
             
             UpgradeOneBtn.onClick.AddListener(() => UpdateItemDescription(LifeDescription, SelectedUpgrade.Life));
             UpgradeTwoBtn.onClick.AddListener(() => UpdateItemDescription(SpeedDescription, SelectedUpgrade.Speed));
             UpgradeThreeBtn.onClick.AddListener(() => UpdateItemDescription(JumpDescription, SelectedUpgrade.Jump));
+
+            m_upgradesPrice[SelectedUpgrade.Life] = LifeDescription.ItemPrice;
+            m_upgradesPrice[SelectedUpgrade.Jump] = JumpDescription.ItemPrice;
+            m_upgradesPrice[SelectedUpgrade.Speed] = SpeedDescription.ItemPrice;
         }
 
         public void Show() {
             UpgradePanel.SetActive(true);
+            CoinsText.text = PlayerStatus.Coins.ToString();
         }
 
         private void Hide() {
@@ -64,6 +84,28 @@ namespace InfinityRunner.Managers {
             DescriptionText.text = item.Description;
             PriceText.text = item.ItemPrice.ToString();
             Upgrade = upgrade;
+            
+            if (PlayerStatus.Coins < m_upgradesPrice[Upgrade]) {
+                BuyUpgradeBtn.interactable = false;
+                return;
+            }
+            
+            BuyUpgradeBtn.interactable = true;
+        }
+
+        private void UpdateStatusUpgrade(SelectedUpgrade upgrade) {
+            
+            switch (upgrade) {
+                case SelectedUpgrade.Life:
+                    PlayerStatus.Life += 1;
+                    break;
+                case SelectedUpgrade.Speed:
+                    PlayerStatus.Speed += 0.5f;
+                    break;
+                case SelectedUpgrade.Jump:
+                    PlayerStatus.CoinMultiplier += 1;
+                    break;
+            }
         }
     }
 }

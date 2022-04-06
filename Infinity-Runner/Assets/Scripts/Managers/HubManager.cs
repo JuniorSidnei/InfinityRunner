@@ -17,9 +17,9 @@ namespace InfinityRunner.Managers {
         public Button ShopBtn;
         public Button UpgradeBtn;
         
-        public GameObject ShopPanel;
+        public ShopManager ShopManager;
         public UpgradeManager UpgradeManager;
-        
+
         private void Awake() {
             
             PlayBtn.onClick.AddListener(() => {
@@ -31,7 +31,7 @@ namespace InfinityRunner.Managers {
             });
             
             ShopBtn.onClick.AddListener(() => {
-                //show shop panel
+                ShopManager.Show();
             });
             
             UpgradeBtn.onClick.AddListener(() => {

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using InfinityRunner.Scriptables;
 using UnityEngine;
 
 namespace InfinityRunner.Managers.Ground {
@@ -10,11 +11,15 @@ namespace InfinityRunner.Managers.Ground {
         public float MinimumX;
         public float Speed;
         public bool IsGround;
-        
+
+        public PlayerStatus PlayerStatus;
         public delegate void OnGroundReallocated(GameObject ground);
         public static event OnGroundReallocated onGroundReallocated;
-        
-        
+
+        private void Awake() {
+            Speed = PlayerStatus.Speed;
+        }
+
         private void FixedUpdate() {
             if (!GameManager.Instance.IsGameStarted) return;
             

@@ -526,6 +526,7 @@ MonoBehaviour:
   MinimumX: -15
   Speed: 3
   IsGround: 1
+  PlayerStatus: {fileID: 11400000, guid: 258b3aac7cc57a34a9e758324a75c013, type: 2}
 --- !u!1 &3900513848388148236
 GameObject:
   m_ObjectHideFlags: 0

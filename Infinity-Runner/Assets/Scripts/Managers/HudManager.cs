@@ -40,7 +40,7 @@ namespace InfinityRunner.Managers {
         private void Start() {
             for (var i = 0; i < PlayerStatus.Life; i++) {
                 var life = Instantiate(LifeObject, LifeContainer);
-                life.transform.localPosition = new Vector3(i * 80, 0, 0);
+                life.transform.localPosition = new Vector3(i * 50, 0, 0);
                 m_lifes.Add(life);
             }
             
@@ -50,6 +50,7 @@ namespace InfinityRunner.Managers {
             });
             
             HubBtn.onClick.AddListener(ShowHubScene);
+            UpdateScore(PlayerStatus.Coins);
         }
 
         private void GameStarted() {

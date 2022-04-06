@@ -9,9 +9,10 @@ namespace InfinityRunner.Scriptables {
         public int Life;
         public int Coins;
         public float Speed;
-        public bool DoubleJump;
-        public bool Shield;
-        public bool CoinCollector;
-        public bool Shoot;
+        public int CoinMultiplier;
+        public int Shield;
+        public int Collector;
+        public int Shoot;
+        public int Respawn;
     }
 }

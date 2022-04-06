@@ -156,3 +156,4 @@ MonoBehaviour:
   MinimumX: -10
   Speed: 3
   IsGround: 0
+  PlayerStatus: {fileID: 11400000, guid: 258b3aac7cc57a34a9e758324a75c013, type: 2}

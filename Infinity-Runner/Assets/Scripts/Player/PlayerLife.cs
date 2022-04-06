@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using InfinityRunner.Managers;
+using InfinityRunner.Save;
 using InfinityRunner.Scriptables;
 using UnityEngine;
 
@@ -24,6 +25,12 @@ namespace InfinityRunner.Player {
             }
 
             m_life -= 1;
+            if (m_life <= 0) {
+                PlayerStatus.Coins = 5000;
+                PlayerStatus.Life = 1;
+                SaveSystem.SavePlayerStatus(PlayerStatus);
+            }
+            
             HudManager.Instance.UpdateLife(m_life);
         }
     }

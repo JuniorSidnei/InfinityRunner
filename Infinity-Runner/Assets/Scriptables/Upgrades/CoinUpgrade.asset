@@ -9,13 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54abe7094952eb243a117e8251032d8f, type: 3}
-  m_Name: PlayerStatus
+  m_Script: {fileID: 11500000, guid: 19294dff286d40749aa1cd053985fcc1, type: 3}
+  m_Name: CoinUpgrade
   m_EditorClassIdentifier: 
-  Life: 1
-  Coins: 20
-  Speed: 3
-  DoubleJump: 0
-  ShieldUpgrade: 0
-  CollectorUpgrade: 0
-  ShootUpgrade: 0
+  Description: This upgrade increase the value of coins in game plus one.
+  ItemPrice: 300

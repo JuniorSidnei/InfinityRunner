@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19294dff286d40749aa1cd053985fcc1, type: 3}
-  m_Name: JumpUpgrade
+  m_Name: Shoot
   m_EditorClassIdentifier: 
-  Description: This upgrade can let you jump twice before hitting the floor again.
-  ItemPrice: 100
+  Description: With this destructive item you can shoot and destroy obstacle with
+    limited ammounition.
+  ItemPrice: 2500
