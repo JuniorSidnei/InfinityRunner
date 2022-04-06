@@ -4274,9 +4274,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OptionsPanel: {fileID: 1375992735}
-  Resolution: {fileID: 1369735645}
   CredtisBtn: {fileID: 1747720539}
   BackBtn: {fileID: 463616159}
+  VfxVolumeSlider: {fileID: 308937006}
+  MusicVolumeSlider: {fileID: 975585735}
+  FullscreenToggle: {fileID: 886277931}
+  Resolution: {fileID: 1369735645}
+  GameSettingsData: {fileID: 11400000, guid: 39e218cd84ecc844fa2e0dcd05fe7eef, type: 2}
 --- !u!1 &1642505728
 GameObject:
   m_ObjectHideFlags: 0
