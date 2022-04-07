@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: PlayerStatus
   m_EditorClassIdentifier: 
   Life: 1
-  Coins: 20
+  Coins: 0
   Speed: 3
-  DoubleJump: 0
-  ShieldUpgrade: 0
-  CollectorUpgrade: 0
-  ShootUpgrade: 0
+  CoinMultiplier: 0
+  Shield: 0
+  Collector: 0
+  Shoot: 0
+  Respawn: 0

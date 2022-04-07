@@ -27,6 +27,9 @@ namespace InfinityRunner.Managers {
         public TextMeshProUGUI ScoreText;
 
         public PlayerStatus PlayerStatus;
+        public GameSettingsData GameSettingsData;
+        public AudioClip ClickButton;
+        
         private List<GameObject> m_lifes = new List<GameObject>();
 
         private void OnEnable() {
@@ -46,6 +49,7 @@ namespace InfinityRunner.Managers {
             
             RetryBtn.onClick.AddListener(() => {
                 Time.timeScale = 1;
+                AudioController.Instance.Play(ClickButton, AudioController.SoundType.SoundEffect2D, GameSettingsData.VfxVolume);
                 SceneManager.LoadScene("GameScene");
             });
             
@@ -73,12 +77,14 @@ namespace InfinityRunner.Managers {
         }
 
         private void EnableEndGamePanel() {
+            AudioController.Instance.Stop(AudioController.SoundType.Music);
             EndGamePanel.SetActive(enabled);
             Time.timeScale = enabled ? 0 : 1;
         }
 
         private void ShowHubScene() {
             Time.timeScale = 1;
+            AudioController.Instance.Play(ClickButton, AudioController.SoundType.SoundEffect2D, GameSettingsData.VfxVolume);
             SceneManager.LoadScene("Hub");
         }
     }

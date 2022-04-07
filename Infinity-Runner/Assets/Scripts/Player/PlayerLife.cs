@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using InfinityRunner.Managers;
 using InfinityRunner.Save;
 using InfinityRunner.Scriptables;
+using InfinityRunner.Utils;
 using UnityEngine;
 
 namespace InfinityRunner.Player {
@@ -12,7 +13,7 @@ namespace InfinityRunner.Player {
 
         public PlayerStatus PlayerStatus;
         public LayerMask ObstacleLayer;
-
+        public AudioClip HurtSound;
         private int m_life;
         
         private void Awake() {
@@ -26,8 +27,7 @@ namespace InfinityRunner.Player {
 
             m_life -= 1;
             if (m_life <= 0) {
-                PlayerStatus.Coins = 5000;
-                PlayerStatus.Life = 1;
+                AudioController.Instance.Play(HurtSound, AudioController.SoundType.SoundEffect2D, GameManager.Instance.GetVfxVolume());
                 SaveSystem.SavePlayerStatus(PlayerStatus);
             }
             

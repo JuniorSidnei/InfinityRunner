@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using InfinityRunner.Save;
 using InfinityRunner.Scriptables;
+using InfinityRunner.Utils;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +19,7 @@ namespace InfinityRunner.Managers {
 
         public SelectedItem Item;
         public PlayerStatus PlayerStatus;
+        public GameSettingsData GameSettingsData;
         
         [Header("Control Btns")]
         public Button BuyUpgradeBtn;
@@ -48,6 +50,9 @@ namespace InfinityRunner.Managers {
         public TextMeshProUGUI CollectorQuantity;
         public TextMeshProUGUI RespawnQuantity;
         
+        public AudioClip ClickButton;
+        public AudioClip Purchase;
+        
         private Dictionary<SelectedItem, int> m_itemsPrice = new Dictionary<SelectedItem, int>();
         
         private void Awake() {
@@ -57,6 +62,7 @@ namespace InfinityRunner.Managers {
             BuyUpgradeBtn.onClick.AddListener(() => {
                 if (PlayerStatus.Coins < m_itemsPrice[Item]) return;
                 
+                AudioController.Instance.Play(Purchase, AudioController.SoundType.SoundEffect2D, GameSettingsData.VfxVolume);
                 PlayerStatus.Coins -= m_itemsPrice[Item];
                 UpdateStatusItem(Item);
                 UpdateItemsQuantity();
@@ -107,6 +113,7 @@ namespace InfinityRunner.Managers {
         }
 
         private void UpdateItemDescription(ItemDescription item, SelectedItem selectedItem) {
+            AudioController.Instance.Play(ClickButton, AudioController.SoundType.SoundEffect2D, GameSettingsData.VfxVolume);
             DescriptionText.text = item.Description;
             PriceText.text = item.ItemPrice.ToString();
             Item = selectedItem;
@@ -125,6 +132,7 @@ namespace InfinityRunner.Managers {
         }
 
         private void Hide() {
+            AudioController.Instance.Play(ClickButton, AudioController.SoundType.SoundEffect2D, GameSettingsData.VfxVolume);
             ShopPanel.SetActive(false);
         }
     }

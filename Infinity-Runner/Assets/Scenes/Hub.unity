@@ -5796,6 +5796,50 @@ MonoBehaviour:
   m_Spacing: {x: 60, y: 100}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!1 &1803768482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1803768484}
+  - component: {fileID: 1803768483}
+  m_Layer: 0
+  m_Name: AudioController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1803768483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803768482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87daf3720ca469b4b97c5103ab94df4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundEffectChannel: 1
+--- !u!4 &1803768484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803768482}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.887984, y: 2.1912355, z: -0.807777}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1818938265
 GameObject:
   m_ObjectHideFlags: 0
@@ -5847,6 +5891,9 @@ MonoBehaviour:
   UpgradeBtn: {fileID: 89115082}
   ShopManager: {fileID: 1818938269}
   UpgradeManager: {fileID: 1818938268}
+  ClickButton: {fileID: 8300000, guid: 0068acbc4a024d644a1e666efb372eda, type: 3}
+  MusicHub: {fileID: 8300000, guid: 813d4c3ccfa996c4a8eed71387341ac6, type: 3}
+  GameSettingsData: {fileID: 11400000, guid: 39e218cd84ecc844fa2e0dcd05fe7eef, type: 2}
 --- !u!114 &1818938268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5873,6 +5920,9 @@ MonoBehaviour:
   SpeedDescription: {fileID: 11400000, guid: 65c1c99abe12f63408f1792e00baecb7, type: 2}
   Upgrade: 0
   PlayerStatus: {fileID: 11400000, guid: 258b3aac7cc57a34a9e758324a75c013, type: 2}
+  GameSettingsData: {fileID: 11400000, guid: 39e218cd84ecc844fa2e0dcd05fe7eef, type: 2}
+  ClickButton: {fileID: 8300000, guid: 0068acbc4a024d644a1e666efb372eda, type: 3}
+  Purchase: {fileID: 8300000, guid: 02d62b0d088316d4295426de606a3230, type: 3}
 --- !u!114 &1818938269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5887,6 +5937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Item: 0
   PlayerStatus: {fileID: 11400000, guid: 258b3aac7cc57a34a9e758324a75c013, type: 2}
+  GameSettingsData: {fileID: 11400000, guid: 39e218cd84ecc844fa2e0dcd05fe7eef, type: 2}
   BuyUpgradeBtn: {fileID: 1236318871}
   BackUpgradeBtn: {fileID: 1384481301}
   CoinsText: {fileID: 570667331}
@@ -5905,6 +5956,8 @@ MonoBehaviour:
   ShieldQuantity: {fileID: 157605122}
   CollectorQuantity: {fileID: 536566190}
   RespawnQuantity: {fileID: 2008456024}
+  ClickButton: {fileID: 8300000, guid: 0068acbc4a024d644a1e666efb372eda, type: 3}
+  Purchase: {fileID: 8300000, guid: 02d62b0d088316d4295426de606a3230, type: 3}
 --- !u!1 &2008456022
 GameObject:
   m_ObjectHideFlags: 0

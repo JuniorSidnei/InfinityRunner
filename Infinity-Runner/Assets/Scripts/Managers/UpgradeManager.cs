@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using InfinityRunner.Save;
 using InfinityRunner.Scriptables;
+using InfinityRunner.Utils;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -38,10 +39,11 @@ namespace InfinityRunner.Managers {
 
         public SelectedUpgrade Upgrade;
         public PlayerStatus PlayerStatus;
+        public GameSettingsData GameSettingsData;
 
-        public delegate void OnPurchaseUpgrade(SelectedUpgrade upgrade);
-        public static event OnPurchaseUpgrade onPurchaseUpgrade;
-
+        public AudioClip ClickButton;
+        public AudioClip Purchase;
+        
         private Dictionary<SelectedUpgrade, int> m_upgradesPrice = new Dictionary<SelectedUpgrade, int>();
         
         private void Awake() {
@@ -51,6 +53,7 @@ namespace InfinityRunner.Managers {
             BuyUpgradeBtn.onClick.AddListener(() => {
                 if (PlayerStatus.Coins < m_upgradesPrice[Upgrade]) return;
                 
+                AudioController.Instance.Play(Purchase, AudioController.SoundType.SoundEffect2D, GameSettingsData.VfxVolume);
                 PlayerStatus.Coins -= m_upgradesPrice[Upgrade];
                 UpdateStatusUpgrade(Upgrade);
                 Upgrade = SelectedUpgrade.None;
@@ -59,7 +62,6 @@ namespace InfinityRunner.Managers {
                 CoinsText.text = PlayerStatus.Coins.ToString();
                 DescriptionText.text = "";
                 PriceText.text = "";
-                onPurchaseUpgrade?.Invoke(Upgrade);
             });
             
             UpgradeOneBtn.onClick.AddListener(() => UpdateItemDescription(LifeDescription, SelectedUpgrade.Life));
@@ -77,10 +79,12 @@ namespace InfinityRunner.Managers {
         }
 
         private void Hide() {
+            AudioController.Instance.Play(ClickButton, AudioController.SoundType.SoundEffect2D, GameSettingsData.VfxVolume);
             UpgradePanel.SetActive(false);
         }
         
         private void UpdateItemDescription(ItemDescription item, SelectedUpgrade upgrade) {
+            AudioController.Instance.Play(ClickButton, AudioController.SoundType.SoundEffect2D, GameSettingsData.VfxVolume);
             DescriptionText.text = item.Description;
             PriceText.text = item.ItemPrice.ToString();
             Upgrade = upgrade;
