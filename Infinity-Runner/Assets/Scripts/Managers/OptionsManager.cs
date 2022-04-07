@@ -81,6 +81,7 @@ namespace InfinityRunner.Managers {
         }
 
         private void EnableCredits(bool enable) {
+            AudioController.Instance.Play(ClickButton, AudioController.SoundType.SoundEffect2D, GameSettingsData.VfxVolume);
             m_isCreditsScrolling = enable;
             CreditsText.SetActive(enable);
             foreach (var objectToHide in ObjectsToHideForCredits) {

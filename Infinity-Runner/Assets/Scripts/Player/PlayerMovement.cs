@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using InfinityRunner.Controllers.Raycast;
+using InfinityRunner.Managers;
+using InfinityRunner.Utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,7 +14,8 @@ namespace InfinityRunner.Player.Movement {
         public float FallMultiplier = 2.5f;
         public float LowFallMultiplier = 2f;
         public float JumpForce;
-
+        public AudioClip JumpSound;
+        
         private Rigidbody2D m_rigidbody;
         private PlayerInput m_playerInput;
         private InputAction m_jumpAction;
@@ -49,6 +52,7 @@ namespace InfinityRunner.Player.Movement {
         private void Jump(InputAction.CallbackContext callbackContext) {
             m_isJumpimg = true;
             if (m_raycastController.IsGrounded) {
+                AudioController.Instance.Play(JumpSound, AudioController.SoundType.SoundEffect2D, GameManager.Instance.GetVfxVolume());
                 m_rigidbody.velocity = Vector2.up * JumpForce;
             }
         }
