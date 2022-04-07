@@ -83,7 +83,7 @@ namespace InfinityRunner.Managers {
         private void EnableCredits(bool enable) {
             m_isCreditsScrolling = enable;
             CreditsText.SetActive(enable);
-            foreach (var objectToHide in ObjectsToHideForCredits){
+            foreach (var objectToHide in ObjectsToHideForCredits) {
                 objectToHide.SetActive(!enable);
             }
             CreditsContainer.SetActive(enable); 
