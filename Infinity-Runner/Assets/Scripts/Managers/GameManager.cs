@@ -68,6 +68,7 @@ namespace InfinityRunner.Managers {
             PlayerStatus.Shield = playerData.Shield;
             PlayerStatus.Collector = playerData.Collector;
             PlayerStatus.Shoot = playerData.Shoot;
+            PlayerStatus.Respawn = playerData.Respawn;
 
             m_playerScore = playerData.Coins;
         }

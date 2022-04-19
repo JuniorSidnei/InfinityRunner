@@ -12,8 +12,10 @@ namespace InfinityRunner.Managers.Ground {
         public float Speed;
         public bool IsGround;
         public bool IgnorePlayerSpeed;
-
+        public LayerMask BulletLayer;
+        public GameObject SmokeParticle;
         public PlayerStatus PlayerStatus;
+        
         public delegate void OnGroundReallocated(GameObject ground);
         public static event OnGroundReallocated onGroundReallocated;
         
@@ -37,6 +39,13 @@ namespace InfinityRunner.Managers.Ground {
                 }
                 
             }
+        }
+
+        private void OnTriggerEnter2D(Collider2D other) {
+            if (((1 << other.gameObject.layer) & BulletLayer) == 0) return;
+            
+            Instantiate(SmokeParticle, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
     }
 }

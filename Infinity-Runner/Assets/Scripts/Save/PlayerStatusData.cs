@@ -14,10 +14,10 @@ namespace InfinityRunner.Save {
         public int Life;
         public float Speed;
         public int CoinMultiplier;
-        public int Shield;
-        public int Shoot;
-        public int Collector;
-        public int Respawn;
+        public bool Shield;
+        public bool Shoot;
+        public bool Collector;
+        public bool Respawn;
 
         public PlayerStatusData(PlayerStatus playerStatus) {
             Coins = playerStatus.Coins;

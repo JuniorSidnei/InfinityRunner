@@ -98,16 +98,16 @@ namespace InfinityRunner.Managers {
         private void UpdateStatusItem(SelectedItem item) {
             switch (item) {
                 case SelectedItem.Collector:
-                    PlayerStatus.Collector += 1;
+                    PlayerStatus.Collector = true;
                     break;
                 case SelectedItem.Shoot:
-                    PlayerStatus.Shoot += 1;
+                    PlayerStatus.Shoot = true;
                     break;
                 case SelectedItem.Shield:
-                    PlayerStatus.Shield += 1;
+                    PlayerStatus.Shield = true;
                     break;
                 case SelectedItem.Respawn:
-                    PlayerStatus.Respawn += 1;
+                    PlayerStatus.Respawn = true;
                     break;
             }
         }

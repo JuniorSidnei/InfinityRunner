@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54abe7094952eb243a117e8251032d8f, type: 3}
   m_Name: PlayerStatus
   m_EditorClassIdentifier: 
-  Life: 1
-  Coins: 0
-  Speed: 3
-  CoinMultiplier: 0
+  Life: 2
+  Coins: 195
+  Speed: 5.5
+  CoinMultiplier: 2
+  AmmunitionAmount: 5
   Shield: 0
   Collector: 0
-  Shoot: 0
+  Shoot: 1
   Respawn: 0

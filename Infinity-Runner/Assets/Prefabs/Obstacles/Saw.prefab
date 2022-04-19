@@ -114,6 +114,11 @@ MonoBehaviour:
   MinimumX: -10
   Speed: 3
   IsGround: 0
+  IgnorePlayerSpeed: 0
+  BulletLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  SmokeParticle: {fileID: 1409832434216657374, guid: 2f4bb0c84bf1621449d6e65ce23c9249, type: 3}
   PlayerStatus: {fileID: 11400000, guid: 258b3aac7cc57a34a9e758324a75c013, type: 2}
 --- !u!95 &7090767677120618699
 Animator:

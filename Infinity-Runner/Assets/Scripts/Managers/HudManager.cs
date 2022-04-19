@@ -4,6 +4,7 @@ using InfinityRunner.Scriptables;
 using InfinityRunner.Utils;
 using TMPro;
 using Unity.Mathematics;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -26,6 +27,10 @@ namespace InfinityRunner.Managers {
         [Header("score settings")]
         public TextMeshProUGUI ScoreText;
 
+        [Header("shoot settings")]
+        public TextMeshProUGUI BulletAmount;
+        public GameObject BulletContainer;
+        
         public PlayerStatus PlayerStatus;
         public GameSettingsData GameSettingsData;
         public AudioClip ClickButton;
@@ -55,6 +60,10 @@ namespace InfinityRunner.Managers {
             
             HubBtn.onClick.AddListener(ShowHubScene);
             UpdateScore(PlayerStatus.Coins);
+
+            if (!PlayerStatus.Shoot) return;
+            
+            BulletContainer.SetActive(true);
         }
 
         private void GameStarted() {
@@ -76,6 +85,10 @@ namespace InfinityRunner.Managers {
             PlayerStatus.Coins = currentScore;
         }
 
+        public void UpdateBulletAmount(int amount) {
+            BulletAmount.text = amount.ToString();
+        }
+        
         private void EnableEndGamePanel() {
             AudioController.Instance.Stop(AudioController.SoundType.Music);
             EndGamePanel.SetActive(enabled);

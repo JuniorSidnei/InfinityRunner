@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 5609980579024922096}
   - component: {fileID: 7380981207271639419}
   - component: {fileID: 1962843088866064003}
-  m_Layer: 0
+  - component: {fileID: 3410108572550574874}
+  m_Layer: 9
   m_Name: Coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +116,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.006414756, y: 0}
@@ -147,6 +148,9 @@ MonoBehaviour:
   Speed: 3
   IsGround: 0
   IgnorePlayerSpeed: 0
+  BulletLayer:
+    serializedVersion: 2
+    m_Bits: 512
   PlayerStatus: {fileID: 11400000, guid: 258b3aac7cc57a34a9e758324a75c013, type: 2}
 --- !u!114 &1962843088866064003
 MonoBehaviour:
@@ -164,3 +168,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   Sparkle: {fileID: 1409832434216657374, guid: 4d04fceae60e5854c9631b03ac0d4346, type: 3}
+  PlayerStatus: {fileID: 11400000, guid: 258b3aac7cc57a34a9e758324a75c013, type: 2}
+--- !u!58 &3410108572550574874
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5609980579024922100}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.5
