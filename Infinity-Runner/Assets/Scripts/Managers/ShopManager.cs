@@ -74,6 +74,13 @@ namespace InfinityRunner.Managers {
                 PriceText.text = "";
             });
             
+           
+            ValidateItemObtained(ItemOneBtn, PlayerStatus.Shoot);
+            ValidateItemObtained(ItemTwoBtn, PlayerStatus.Collector);
+            ValidateItemObtained(ItemThreeBtn, PlayerStatus.Shield);
+            ValidateItemObtained(ItemFourBtn, PlayerStatus.Respawn);
+            
+            
             ItemOneBtn.onClick.AddListener(() => UpdateItemDescription(ShootDescription, SelectedItem.Shoot));
             ItemTwoBtn.onClick.AddListener(() => UpdateItemDescription(CollectorDescription, SelectedItem.Collector));
             ItemThreeBtn.onClick.AddListener(() => UpdateItemDescription(ShieldDescription, SelectedItem.Shield));
@@ -89,10 +96,10 @@ namespace InfinityRunner.Managers {
         }
 
         private void UpdateItemsQuantity() {
-            ShootQuantity.text = PlayerStatus.Shoot.ToString();
-            ShieldQuantity.text = PlayerStatus.Shield.ToString();
-            RespawnQuantity.text = PlayerStatus.Respawn.ToString();
-            CollectorQuantity.text = PlayerStatus.Collector.ToString();
+            ShootQuantity.text = PlayerStatus.Shoot ? "Obtained!" : ShootDescription.ItemPrice.ToString();
+            ShieldQuantity.text = PlayerStatus.Shield ? "Obtained!" : ShieldDescription.ItemPrice.ToString();
+            RespawnQuantity.text = PlayerStatus.Respawn ? "Obtained!" : RespawnDescription.ItemPrice.ToString();
+            CollectorQuantity.text = PlayerStatus.Collector ? "Obtained!" : CollectorDescription.ItemPrice.ToString();
         }
 
         private void UpdateStatusItem(SelectedItem item) {
@@ -135,5 +142,12 @@ namespace InfinityRunner.Managers {
             AudioController.Instance.Play(ClickButton, AudioController.SoundType.SoundEffect2D, GameSettingsData.VfxVolume);
             ShopPanel.SetActive(false);
         }
+
+        private void ValidateItemObtained(Selectable button, bool isItemObtained) {
+            if (isItemObtained) {
+                button.interactable = false;
+            }
+        }
+        
     }
 }
