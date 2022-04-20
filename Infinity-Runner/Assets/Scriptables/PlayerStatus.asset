@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: PlayerStatus
   m_EditorClassIdentifier: 
   Life: 2
-  Coins: 306
+  Coins: 333
   Speed: 5.5
   CoinMultiplier: 2
   AmmunitionAmount: 5
-  Shield: 0
+  Shield: 1
   Collector: 1
   Shoot: 1
   Respawn: 0

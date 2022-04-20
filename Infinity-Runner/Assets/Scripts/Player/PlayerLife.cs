@@ -15,10 +15,15 @@ namespace InfinityRunner.Player {
         public PlayerStatus PlayerStatus;
         public LayerMask ObstacleLayer;
         public AudioClip HurtSound;
+        public GameObject ShieldContainer;
+        
         private int m_life;
+        private bool m_isShieldActivated;
         
         private void Awake() {
             m_life = PlayerStatus.Life;
+            m_isShieldActivated = PlayerStatus.Shield;
+            ShieldContainer.SetActive(m_isShieldActivated);
         }
 
         private void OnTriggerEnter2D(Collider2D other) {
@@ -26,9 +31,17 @@ namespace InfinityRunner.Player {
                 return;
             }
 
-            m_life -= 1;
             Camera.main.DOShakePosition(0.2f, 0.2f);
             AudioController.Instance.Play(HurtSound, AudioController.SoundType.SoundEffect2D, GameManager.Instance.GetVfxVolume());
+            
+            if (m_isShieldActivated) {
+                m_isShieldActivated = false;
+                ShieldContainer.SetActive(m_isShieldActivated);
+                return;
+            }
+            
+            m_life -= 1;
+            
             if (m_life <= 0) {
                 SaveSystem.SavePlayerStatus(PlayerStatus);
             }
