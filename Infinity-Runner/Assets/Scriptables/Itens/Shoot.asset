@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Description: With this destructive item you can shoot and destroy obstacle with
     limited ammounition.
-  ItemPrice: 2500
+  ItemPrice: 500

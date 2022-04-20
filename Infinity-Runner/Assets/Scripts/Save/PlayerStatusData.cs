@@ -17,7 +17,6 @@ namespace InfinityRunner.Save {
         public bool Shield;
         public bool Shoot;
         public bool Collector;
-        public bool Respawn;
 
         public PlayerStatusData(PlayerStatus playerStatus) {
             Coins = playerStatus.Coins;
@@ -27,7 +26,6 @@ namespace InfinityRunner.Save {
             Shield = playerStatus.Shield;
             Shoot = playerStatus.Shoot;
             Collector = playerStatus.Collector;
-            Respawn = playerStatus.Respawn;
         }
     }
 }

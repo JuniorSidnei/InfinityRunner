@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: CoinUpgrade
   m_EditorClassIdentifier: 
   Description: This upgrade increase the value of coins in game plus one.
-  ItemPrice: 200
+  ItemPrice: 100

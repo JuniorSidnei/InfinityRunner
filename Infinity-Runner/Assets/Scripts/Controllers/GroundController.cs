@@ -10,9 +10,7 @@ namespace InfinityRunner.Controllers {
     public class GroundController : MonoBehaviour {
         public GameObject Ground;
 
-        private List<GameObject> m_grounds = new List<GameObject>();
         private Vector3 NextSpawnPosition;
-        private int m_indexList = 0;
         private GameObject m_lastGround;
 
         private void OnEnable()
@@ -40,7 +38,6 @@ namespace InfinityRunner.Controllers {
             var tempGround = Instantiate(Ground, NextSpawnPosition, Quaternion.identity, transform);
             NextSpawnPosition = tempGround.transform.GetChild(0).transform.position;
             m_lastGround = tempGround;
-            //m_grounds.Add(tempGround);
         }
 
         private void OnGroundReallocated(GameObject ground) {

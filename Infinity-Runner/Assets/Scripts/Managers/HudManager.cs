@@ -59,8 +59,9 @@ namespace InfinityRunner.Managers {
             });
             
             HubBtn.onClick.AddListener(ShowHubScene);
+            
             UpdateScore(PlayerStatus.Coins);
-
+        
             if (!PlayerStatus.Shoot) return;
             
             BulletContainer.SetActive(true);

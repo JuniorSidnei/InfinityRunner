@@ -13,7 +13,7 @@ namespace InfinityRunner.Managers {
     public class ShopManager : MonoBehaviour {
         
         public enum SelectedItem {
-            None, Shoot, Shield, Respawn, Collector 
+            None, Shoot, Shield, Collector 
         }
 
 
@@ -32,23 +32,20 @@ namespace InfinityRunner.Managers {
         public Button ItemOneBtn;
         public Button ItemTwoBtn;
         public Button ItemThreeBtn;
-        public Button ItemFourBtn;
 
         [Header("Upgrade texts descriptions")]
         public TextMeshProUGUI DescriptionText;
         public TextMeshProUGUI PriceText;
         
-        [Header("Itens upgrades descriptions")]
+        [Header("Items upgrades descriptions")]
         public ItemDescription ShootDescription;
         public ItemDescription ShieldDescription;
         public ItemDescription CollectorDescription;
-        public ItemDescription RespawnDescription;
 
-        [Header("itens quantity")]
+        [Header("items quantity")]
         public TextMeshProUGUI ShootQuantity;
         public TextMeshProUGUI ShieldQuantity;
         public TextMeshProUGUI CollectorQuantity;
-        public TextMeshProUGUI RespawnQuantity;
         
         public AudioClip ClickButton;
         public AudioClip Purchase;
@@ -78,18 +75,15 @@ namespace InfinityRunner.Managers {
             ValidateItemObtained(ItemOneBtn, PlayerStatus.Shoot);
             ValidateItemObtained(ItemTwoBtn, PlayerStatus.Collector);
             ValidateItemObtained(ItemThreeBtn, PlayerStatus.Shield);
-            ValidateItemObtained(ItemFourBtn, PlayerStatus.Respawn);
             
             
             ItemOneBtn.onClick.AddListener(() => UpdateItemDescription(ShootDescription, SelectedItem.Shoot));
             ItemTwoBtn.onClick.AddListener(() => UpdateItemDescription(CollectorDescription, SelectedItem.Collector));
             ItemThreeBtn.onClick.AddListener(() => UpdateItemDescription(ShieldDescription, SelectedItem.Shield));
-            ItemFourBtn.onClick.AddListener(() => UpdateItemDescription(RespawnDescription, SelectedItem.Respawn));
             
             
             m_itemsPrice[SelectedItem.Shoot] = ShootDescription.ItemPrice;
             m_itemsPrice[SelectedItem.Shield] = ShieldDescription.ItemPrice;
-            m_itemsPrice[SelectedItem.Respawn] = RespawnDescription.ItemPrice;
             m_itemsPrice[SelectedItem.Collector] = CollectorDescription.ItemPrice;
 
             UpdateItemsQuantity();
@@ -98,7 +92,6 @@ namespace InfinityRunner.Managers {
         private void UpdateItemsQuantity() {
             ShootQuantity.text = PlayerStatus.Shoot ? "Obtained!" : ShootDescription.ItemPrice.ToString();
             ShieldQuantity.text = PlayerStatus.Shield ? "Obtained!" : ShieldDescription.ItemPrice.ToString();
-            RespawnQuantity.text = PlayerStatus.Respawn ? "Obtained!" : RespawnDescription.ItemPrice.ToString();
             CollectorQuantity.text = PlayerStatus.Collector ? "Obtained!" : CollectorDescription.ItemPrice.ToString();
         }
 
@@ -112,9 +105,6 @@ namespace InfinityRunner.Managers {
                     break;
                 case SelectedItem.Shield:
                     PlayerStatus.Shield = true;
-                    break;
-                case SelectedItem.Respawn:
-                    PlayerStatus.Respawn = true;
                     break;
             }
         }

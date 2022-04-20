@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Shield
   m_EditorClassIdentifier: 
   Description: With this item you have a shield that blocks the first hit on obstacle.
-  ItemPrice: 500
+  ItemPrice: 300

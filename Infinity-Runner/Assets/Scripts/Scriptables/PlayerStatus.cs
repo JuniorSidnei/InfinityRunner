@@ -14,6 +14,5 @@ namespace InfinityRunner.Scriptables {
         public bool Shield; 
         public bool Collector;
         public bool Shoot;
-        public bool Respawn;
     }
 }
